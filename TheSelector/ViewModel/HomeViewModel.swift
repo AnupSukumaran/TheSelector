@@ -24,9 +24,10 @@ protocol HomeViewModelProtocol: ViewModelProtocol, UITableViewDataSource, UITabl
 class HomeViewModel: NSObject {
     
     var loader: LoaderView!
-    var textDataModel = [String]()
+    var textStrArr = [String]()
     var successHandler: (() -> ())?
     var errorHandler: ((_ errorStr: String) -> ())?
+    var cellModels = [CellConfigProtocol]()
     
     override init() {}
     init(loader: LoaderView) {
@@ -36,16 +37,38 @@ class HomeViewModel: NSObject {
 }
 
 extension HomeViewModel {
+    
+    func numberOfSections(in tableView: UITableView) -> Int {
+        return cellModels.count
+    }
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return textDataModel.count
+        return cellModels[section].rowCount
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         print("TextTableViewCell.identifier = \(TextTableViewCell.identifier)")
-        if let cell = tableView.dequeueReusableCell(withIdentifier: TextTableViewCell.identifier, for: indexPath) as? TextTableViewCell {
-            cell.mainLB.text = textDataModel[indexPath.row]
-            return cell
+        
+        let cellModel = cellModels[indexPath.section]
+        
+        switch cellModel.cellType {
+        case .jumbled:
+            if let cell = tableView.dequeueReusableCell(withIdentifier: TextTableViewCell.identifier, for: indexPath) as? TextTableViewCell {
+                cell.cellModel = cellModel
+                cell.viewModel = self
+                cell.textStrVal = textStrArr[indexPath.row]
+               return cell
+            }
+            
+        case .section:
+            if let cell = tableView.dequeueReusableCell(withIdentifier: SectionTableViewCell.identifier, for: indexPath) as? SectionTableViewCell {
+                cell.cellModel = cellModel
+               return cell
+            }
+        case .ordered: break
         }
+        
+       
         return UITableViewCell()
     }
     
@@ -75,7 +98,13 @@ extension HomeViewModel: HomeViewModelProtocol {
                 self.parse(jsonData: localData) { (response) in
                     switch response {
                     case .success(let data):
-                        self.textDataModel = data.textDataModel ?? []
+                        self.cellModels.removeAll()
+                        if !(data.textDataModel ?? []).isEmpty {
+                            let cModel = TextTableViewCellModel(textStrArr: data.textDataModel ?? [])
+                            let sModel = SectionTableViewCellModel(titleStr: "Here the questions will be ordered in the correct sequence.")
+                            self.cellModels.append(cModel)
+                            self.cellModels.append(sModel)
+                        }
                         self.successHandler?()
                     
                     case .failure(errorStr: let errStr):

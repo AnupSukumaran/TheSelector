@@ -16,8 +16,41 @@ class TextTableViewCell: UITableViewCell {
     
     let dropDown = DropDown()
     
+    var textStrArr = [String]()
+    
+    var cellModel: CellConfigProtocol? {
+        didSet {
+            guard let model = cellModel as? TextTableViewCellModel else {return}
+            textStrArr = model.textStrArr
+        }
+    }
+    
+    var viewModel: HomeViewModel! {
+        didSet {
+            viewModel.textStrArr = textStrArr
+        }
+    }
+    
+    var textStrVal: String = "-" {
+        didSet {
+            mainLB.text = textStrVal
+        }
+    }
+    
     override func awakeFromNib() {
         super.awakeFromNib()
+        configCellMenu()
+        
+    }
+    
+    @IBAction func menuBtnAction(_ sender: UIButton) {
+        dropDown.show()
+    }
+
+}
+
+extension TextTableViewCell {
+    func configCellMenu() {
         dropDown.dataSource  = ["1","2","3"]
         dropDown.customCellConfiguration = { (index: Index, item: String, cell: DropDownCell) -> Void in
             cell.optionLabel.textAlignment = .center
@@ -30,18 +63,5 @@ class TextTableViewCell: UITableViewCell {
         dropDown.direction = .bottom
         dropDown.dismissMode = .onTap
         dropDown.bottomOffset = CGPoint(x: -5, y:(dropDown.anchorView?.plainView.bounds.height)!)
-        // Will set a custom width instead of the anchor view width
-        
     }
-    
-    override func setSelected(_ selected: Bool, animated: Bool) {
-        super.setSelected(selected, animated: animated)
-
-    }
-    
-    @IBAction func menuBtnAction(_ sender: UIButton) {
-       
-        dropDown.show()
-    }
-
 }

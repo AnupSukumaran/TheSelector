@@ -11,6 +11,9 @@
 		181C50FA250D12810032FCA6 /* TextData.json in Resources */ = {isa = PBXBuildFile; fileRef = 181C50F9250D12800032FCA6 /* TextData.json */; };
 		181C50FC250D12FB0032FCA6 /* NSObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 181C50FB250D12FB0032FCA6 /* NSObject.swift */; };
 		181C5104250D21930032FCA6 /* UIViewController+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 181C5103250D21930032FCA6 /* UIViewController+Ext.swift */; };
+		181C5106250D23480032FCA6 /* CellConfigProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 181C5105250D23470032FCA6 /* CellConfigProtocol.swift */; };
+		181C5108250D2B7C0032FCA6 /* TextTableViewCellModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 181C5107250D2B7C0032FCA6 /* TextTableViewCellModel.swift */; };
+		181C510B250D2BC10032FCA6 /* SectionTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 181C510A250D2BC10032FCA6 /* SectionTableViewCell.swift */; };
 		18F172A8250C680E0090FDCC /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18F172A7250C680E0090FDCC /* HomeViewController.swift */; };
 		18F172AA250C687F0090FDCC /* HomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18F172A9250C687F0090FDCC /* HomeViewModel.swift */; };
 		18F172AC250C6D190090FDCC /* TextTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18F172AB250C6D190090FDCC /* TextTableViewCell.swift */; };
@@ -51,6 +54,9 @@
 		181C50F9250D12800032FCA6 /* TextData.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = TextData.json; sourceTree = "<group>"; };
 		181C50FB250D12FB0032FCA6 /* NSObject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NSObject.swift; sourceTree = "<group>"; };
 		181C5103250D21930032FCA6 /* UIViewController+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Ext.swift"; sourceTree = "<group>"; };
+		181C5105250D23470032FCA6 /* CellConfigProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CellConfigProtocol.swift; sourceTree = "<group>"; };
+		181C5107250D2B7C0032FCA6 /* TextTableViewCellModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextTableViewCellModel.swift; sourceTree = "<group>"; };
+		181C510A250D2BC10032FCA6 /* SectionTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SectionTableViewCell.swift; sourceTree = "<group>"; };
 		18F172A7250C680E0090FDCC /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		18F172A9250C687F0090FDCC /* HomeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewModel.swift; sourceTree = "<group>"; };
 		18F172AB250C6D190090FDCC /* TextTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextTableViewCell.swift; sourceTree = "<group>"; };
@@ -109,6 +115,8 @@
 			isa = PBXGroup;
 			children = (
 				181C50F7250D11780032FCA6 /* TextDataModel.swift */,
+				181C5105250D23470032FCA6 /* CellConfigProtocol.swift */,
+				181C5107250D2B7C0032FCA6 /* TextTableViewCellModel.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -125,9 +133,9 @@
 		181C50FF250D1DF90032FCA6 /* ViewModel */ = {
 			isa = PBXGroup;
 			children = (
+				181C5109250D2B9D0032FCA6 /* CellClasses */,
 				18F172A9250C687F0090FDCC /* HomeViewModel.swift */,
 				18F172A7250C680E0090FDCC /* HomeViewController.swift */,
-				18F172AB250C6D190090FDCC /* TextTableViewCell.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -156,6 +164,15 @@
 				18F172AD250C86890090FDCC /* PaddingLabel.swift */,
 			);
 			path = ViewHelpers;
+			sourceTree = "<group>";
+		};
+		181C5109250D2B9D0032FCA6 /* CellClasses */ = {
+			isa = PBXGroup;
+			children = (
+				18F172AB250C6D190090FDCC /* TextTableViewCell.swift */,
+				181C510A250D2BC10032FCA6 /* SectionTableViewCell.swift */,
+			);
+			path = CellClasses;
 			sourceTree = "<group>";
 		};
 		3B825AD820CD181AB0F3E675 /* Frameworks */ = {
@@ -478,12 +495,15 @@
 			buildActionMask = 2147483647;
 			files = (
 				9D44BDCC250B8A200015A26B /* AppDelegate.swift in Sources */,
+				181C5106250D23480032FCA6 /* CellConfigProtocol.swift in Sources */,
+				181C5108250D2B7C0032FCA6 /* TextTableViewCellModel.swift in Sources */,
 				181C50FC250D12FB0032FCA6 /* NSObject.swift in Sources */,
 				181C50F8250D11780032FCA6 /* TextDataModel.swift in Sources */,
 				18F172AE250C86890090FDCC /* PaddingLabel.swift in Sources */,
 				9D44BDCE250B8A200015A26B /* SceneDelegate.swift in Sources */,
 				18F172A8250C680E0090FDCC /* HomeViewController.swift in Sources */,
 				18F172AA250C687F0090FDCC /* HomeViewModel.swift in Sources */,
+				181C510B250D2BC10032FCA6 /* SectionTableViewCell.swift in Sources */,
 				18F172AC250C6D190090FDCC /* TextTableViewCell.swift in Sources */,
 				181C5104250D21930032FCA6 /* UIViewController+Ext.swift in Sources */,
 			);
