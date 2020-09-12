@@ -30,7 +30,6 @@ class HomeViewModel: NSObject {
     var menuDataSource = [String]()
     var selectedTextArr = [String]()
     var cellModels = [CellConfigProtocol]()
-    var selectionCount: Int = 0
     
     //MARK: properties from HomeViewModelProtocol protocol
     var successHandler: (() -> ())?
@@ -71,14 +70,7 @@ extension HomeViewModel {
                 cell.textStrVal = textStrArr[indexPath.row]
                 cell.menuBtnActionHandler = errorHandler
                 cell.dropDown.selectionAction = { [unowned self] (index: Int, item: String) in
-                 
-                    self.menuDataSource.remove(at: index)
-                    if let indVal = Int(item) {
-                        self.selectedTextArr[indVal-1] = self.textStrArr[indexPath.row]
-                        self.selectionCount += 1
-                    }
-                
-                    self.successHandler?()
+                    self.dropDownSelectionAction(index, indexPath, item)
                 }
             
                return cell
@@ -96,10 +88,7 @@ extension HomeViewModel {
                 cell.textStrVal = selectedTextArr[indexPath.row]
                 cell.eraseBtnHandler = { [weak self] in
                     guard let vc = self else {return}
-                    vc.menuDataSource.append("\(indexPath.row + 1)")
-                    vc.menuDataSource.sort()
-                    vc.selectedTextArr[indexPath.row] = ""
-                    vc.successHandler?()
+                    vc.eraseAction(indexPath)
                 }
                return cell
             }
@@ -112,14 +101,25 @@ extension HomeViewModel {
     
 }
 
-//extension HomeViewModel {
-//    func eraseAction(indexPath: IndexPath) {
-//        menuDataSource.append("\(indexPath.row + 1)")
-//        menuDataSource.sort()
-//        selectedTextArr[indexPath.row] = ""
-//        successHandler?()
-//    }
-//}
+// MARK: functions
+extension HomeViewModel {
+    /// Action to erase selected texts
+    func eraseAction(_ indexPath: IndexPath) {
+        menuDataSource.append("\(indexPath.row + 1)")
+        menuDataSource.sort()
+        selectedTextArr[indexPath.row] = ""
+        successHandler?()
+    }
+    
+    /// Drop down action
+    func dropDownSelectionAction(_ index: Int,_ indexPath: IndexPath,_ item: String) {
+        menuDataSource.remove(at: index)
+        if let indVal = Int(item) {
+           selectedTextArr[indVal-1] = textStrArr[indexPath.row]
+        }
+        successHandler?()
+    }
+}
 
 
 

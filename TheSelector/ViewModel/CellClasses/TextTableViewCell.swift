@@ -45,7 +45,9 @@ class TextTableViewCell: UITableViewCell {
 
 }
 
+//MARK: Functions
 extension TextTableViewCell {
+    /// cell menu config
     func configCellMenu() {
 
         dropDown.customCellConfiguration = { (index: Index, item: String, cell: DropDownCell) -> Void in

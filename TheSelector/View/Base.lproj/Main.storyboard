@@ -20,7 +20,7 @@
                                 <rect key="frame" x="0.0" y="88" width="414" height="774"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="TextTableViewCell" rowHeight="89" id="Rw6-d5-2Ie" customClass="TextTableViewCell" customModule="TheSelector" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="TextTableViewCell" rowHeight="89" id="Rw6-d5-2Ie" customClass="TextTableViewCell" customModule="TheSelector" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="28" width="414" height="89"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="Rw6-d5-2Ie" id="Av9-BA-1Jd">
@@ -81,7 +81,7 @@
                                             <outlet property="menuBtn" destination="VGR-79-Fn7" id="ZKP-kG-CIA"/>
                                         </connections>
                                     </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="SectionTableViewCell" rowHeight="40" id="g0e-cX-Hst" customClass="SectionTableViewCell" customModule="TheSelector" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="SectionTableViewCell" rowHeight="40" id="g0e-cX-Hst" customClass="SectionTableViewCell" customModule="TheSelector" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="117" width="414" height="40"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="g0e-cX-Hst" id="CVb-6t-wC3">
@@ -109,7 +109,7 @@
                                             <outlet property="sectionTitleLB" destination="p1x-jd-TpS" id="Yu4-iX-oS0"/>
                                         </connections>
                                     </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="SelectedItemTableViewCell" rowHeight="80" id="xYz-rG-2Fx" customClass="SelectedItemTableViewCell" customModule="TheSelector" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="SelectedItemTableViewCell" rowHeight="80" id="xYz-rG-2Fx" customClass="SelectedItemTableViewCell" customModule="TheSelector" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="157" width="414" height="80"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="xYz-rG-2Fx" id="B2l-g6-uu9">
