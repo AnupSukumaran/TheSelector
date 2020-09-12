@@ -1,0 +1,6 @@
+framework module Pods_TheSelector_TheSelectorUITests {
+  umbrella header "Pods-TheSelector-TheSelectorUITests-umbrella.h"
+
+  export *
+  module * { export * }
+}
