@@ -14,8 +14,8 @@
             filePath = "TheSelector/ViewModel/HomeViewModel.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "159"
-            endingLineNumber = "159"
+            startingLineNumber = "167"
+            endingLineNumber = "167"
             landmarkName = "callingHomeAPI()"
             landmarkType = "7">
          </BreakpointContent>
@@ -30,8 +30,8 @@
             filePath = "TheSelector/ViewModel/HomeViewModel.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "172"
-            endingLineNumber = "172"
+            startingLineNumber = "180"
+            endingLineNumber = "180"
             landmarkName = "callingHomeAPI()"
             landmarkType = "7">
          </BreakpointContent>

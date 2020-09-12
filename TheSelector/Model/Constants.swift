@@ -14,4 +14,5 @@ extension String {
     static var ok = "OK"
     static var selectedTxt = "Selected every options"
     static var sectionTitle = "Here the questions will be ordered in the correct sequence."
+    static var alreadySelected = "Already selected text."
 }

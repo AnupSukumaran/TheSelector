@@ -27,8 +27,8 @@ class HomeViewModel: NSObject {
     
     var loader: LoaderView!
     var textStrArr = [String]()
-    var menuDataSource = [String]()
     var selectedTextArr = [String]()
+    var menuDataSource = [String]()
     var cellModels = [CellConfigProtocol]()
     
     //MARK: properties from HomeViewModelProtocol protocol
@@ -69,6 +69,7 @@ extension HomeViewModel {
                 cell.viewModel = self
                 cell.textStrVal = textStrArr[indexPath.row]
                 cell.menuBtnActionHandler = errorHandler
+                
                 cell.dropDown.selectionAction = { [unowned self] (index: Int, item: String) in
                     self.dropDownSelectionAction(index, indexPath, item)
                 }
@@ -113,6 +114,13 @@ extension HomeViewModel {
     
     /// Drop down action
     func dropDownSelectionAction(_ index: Int,_ indexPath: IndexPath,_ item: String) {
+        
+        selectedTextArr.forEach { (str) in
+            if textStrArr[indexPath.row] == str {
+                errorHandler?(.alreadySelected)
+            }
+        }
+        
         menuDataSource.remove(at: index)
         if let indVal = Int(item) {
            selectedTextArr[indVal-1] = textStrArr[indexPath.row]

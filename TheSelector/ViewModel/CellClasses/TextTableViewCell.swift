@@ -40,6 +40,8 @@ class TextTableViewCell: UITableViewCell {
     
     @IBAction func menuBtnAction(_ sender: UIButton) {
         guard !viewModel.menuDataSource.isEmpty else {menuBtnActionHandler?(.selectedTxt);return}
+        guard notAlreadySelected() else {menuBtnActionHandler?(.alreadySelected);return}
+        
         dropDown.show()
     }
 
@@ -59,5 +61,16 @@ extension TextTableViewCell {
         dropDown.direction = .bottom
         dropDown.dismissMode = .onTap
         dropDown.bottomOffset = CGPoint(x: -5, y:(dropDown.anchorView?.plainView.bounds.height)!)
+    }
+    
+    func notAlreadySelected() -> Bool {
+        var state = true
+        viewModel.selectedTextArr.forEach { (str) in
+            if textStrVal == str {
+                state = false
+            }
+        }
+        
+        return state
     }
 }
