@@ -31,7 +31,7 @@
                                                     <rect key="frame" x="20" y="12" width="374" height="65"/>
                                                     <subviews>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="item1" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Pir-y4-rYs" customClass="PaddingLabel" customModule="TheSelector" customModuleProvider="target">
-                                                            <rect key="frame" x="0.0" y="7.5" width="336" height="50.5"/>
+                                                            <rect key="frame" x="0.0" y="22.5" width="336" height="20.5"/>
                                                             <color key="backgroundColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                             <nil key="textColor"/>
@@ -56,9 +56,9 @@
                                                             </userDefinedRuntimeAttributes>
                                                         </label>
                                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="VGR-79-Fn7">
-                                                            <rect key="frame" x="344" y="17.5" width="30" height="30"/>
+                                                            <rect key="frame" x="344" y="7.5" width="30" height="50"/>
                                                             <constraints>
-                                                                <constraint firstAttribute="height" constant="30" id="7es-sm-VtV"/>
+                                                                <constraint firstAttribute="height" constant="50" id="7es-sm-VtV"/>
                                                                 <constraint firstAttribute="width" constant="30" id="qRL-IO-WIw"/>
                                                             </constraints>
                                                             <state key="normal" image="downArrow"/>
