@@ -26,6 +26,7 @@ class HomeViewModel: NSObject {
     var loader: LoaderView!
     var textStrArr = [String]()
     var menuDataSource = [String]()
+    var selectedTextArr = [String]()
     var cellModels = [CellConfigProtocol]()
     
     //MARK: properties from HomeViewModelProtocol protocol
@@ -66,6 +67,13 @@ extension HomeViewModel {
                   print("Selected item: \(item) at index: \(index)")
                     guard !self.menuDataSource.isEmpty else { self.errorHandler?(.selectedTxt);return}
                     self.menuDataSource.remove(at: index)
+                    if let intVal = Int(item) {
+                        self.selectedTextArr.append(self.textStrArr[intVal])
+                        print("self.selectedTextArr.count = \(self.selectedTextArr.count) ")
+                        let selectedModel = SelectedItemTableViewCellModel(textStrArr: self.selectedTextArr)
+                        self.cellModels.append(selectedModel)
+                    }
+                    
                     self.successHandler?()
                 }
             
@@ -77,7 +85,11 @@ extension HomeViewModel {
                 cell.cellModel = cellModel
                return cell
             }
-        case .ordered: break
+        case .ordered:
+            if let cell = tableView.dequeueReusableCell(withIdentifier: SelectedItemTableViewCell.identifier, for: indexPath) as? SelectedItemTableViewCell {
+                cell.textStrVal = selectedTextArr[indexPath.row]
+               return cell
+            }
         }
         
        

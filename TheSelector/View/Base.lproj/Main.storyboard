@@ -109,36 +109,53 @@
                                             <outlet property="sectionTitleLB" destination="p1x-jd-TpS" id="Yu4-iX-oS0"/>
                                         </connections>
                                     </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" rowHeight="80" id="xYz-rG-2Fx">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="SelectedItemTableViewCell" rowHeight="80" id="xYz-rG-2Fx" customClass="SelectedItemTableViewCell" customModule="TheSelector" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="157" width="414" height="80"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="xYz-rG-2Fx" id="B2l-g6-uu9">
                                             <rect key="frame" x="0.0" y="0.0" width="414" height="80"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <stackView opaque="NO" contentMode="scaleToFill" fixedFrame="YES" spacing="65" translatesAutoresizingMaskIntoConstraints="NO" id="EAD-JL-V4T">
-                                                    <rect key="frame" x="46" y="11" width="260" height="30"/>
+                                                <stackView opaque="NO" contentMode="scaleToFill" spacing="4" translatesAutoresizingMaskIntoConstraints="NO" id="EAD-JL-V4T">
+                                                    <rect key="frame" x="20" y="20" width="374" height="40"/>
                                                     <subviews>
-                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bsN-IG-nA1">
-                                                            <rect key="frame" x="0.0" y="0.0" width="42" height="30"/>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="1." textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bsN-IG-nA1">
+                                                            <rect key="frame" x="0.0" y="0.0" width="12" height="40"/>
                                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                             <nil key="textColor"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
-                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cXu-b1-Bo9">
-                                                            <rect key="frame" x="107" y="0.0" width="42" height="30"/>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" text="item1" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cXu-b1-Bo9">
+                                                            <rect key="frame" x="16" y="0.0" width="284" height="40"/>
                                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                             <nil key="textColor"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="WUt-gC-VVW">
-                                                            <rect key="frame" x="214" y="0.0" width="46" height="30"/>
-                                                            <state key="normal" title="Button"/>
+                                                            <rect key="frame" x="304" y="0.0" width="70" height="40"/>
+                                                            <constraints>
+                                                                <constraint firstAttribute="width" constant="70" id="ORY-jX-vfU"/>
+                                                            </constraints>
+                                                            <state key="normal" title="Erase"/>
+                                                            <connections>
+                                                                <action selector="eraseBtnAction:" destination="xYz-rG-2Fx" eventType="touchUpInside" id="Ceo-vJ-6xl"/>
+                                                            </connections>
                                                         </button>
                                                     </subviews>
                                                 </stackView>
                                             </subviews>
+                                            <constraints>
+                                                <constraint firstItem="EAD-JL-V4T" firstAttribute="leading" secondItem="B2l-g6-uu9" secondAttribute="leading" constant="20" id="3Qz-uO-Y85"/>
+                                                <constraint firstAttribute="bottom" secondItem="EAD-JL-V4T" secondAttribute="bottom" constant="20" id="lt0-F2-hDE"/>
+                                                <constraint firstAttribute="trailing" secondItem="EAD-JL-V4T" secondAttribute="trailing" constant="20" id="ph5-Hl-BuK"/>
+                                                <constraint firstItem="EAD-JL-V4T" firstAttribute="top" secondItem="B2l-g6-uu9" secondAttribute="top" constant="20" id="vPt-ze-9lL"/>
+                                            </constraints>
                                         </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="eraseBtn" destination="WUt-gC-VVW" id="0Hr-6H-4Ew"/>
+                                            <outlet property="indexLB" destination="bsN-IG-nA1" id="6xV-kp-Mb9"/>
+                                            <outlet property="itemTxt" destination="cXu-b1-Bo9" id="DeD-i0-uxC"/>
+                                        </connections>
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>

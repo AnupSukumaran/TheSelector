@@ -41,3 +41,21 @@ class SectionTableViewCellModel: CellConfigProtocol {
     }
     
 }
+
+class SelectedItemTableViewCellModel: CellConfigProtocol {
+    
+    var cellType: CellType {
+        return .ordered
+    }
+
+    var rowCount: Int {
+        return textStrArr.count
+    }
+    
+    var textStrArr = [String]()
+    init(textStrArr: [String]) {
+        self.textStrArr = textStrArr
+    }
+    
+}
+
