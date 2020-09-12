@@ -40,6 +40,7 @@ extension HomeViewController {
         
         homeViewModel?.errorHandler = { errorStr in
             print("error = \(errorStr)")
+            UIAlertController.showAlert(title: .appName, message: errorStr, buttonTitle: .ok, selfClass: self)
         }
     }
 }

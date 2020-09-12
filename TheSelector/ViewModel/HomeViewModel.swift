@@ -25,9 +25,13 @@ class HomeViewModel: NSObject {
     
     var loader: LoaderView!
     var textStrArr = [String]()
+    var menuDataSource = [String]()
+    var cellModels = [CellConfigProtocol]()
+    
+    //MARK: properties from HomeViewModelProtocol protocol
     var successHandler: (() -> ())?
     var errorHandler: ((_ errorStr: String) -> ())?
-    var cellModels = [CellConfigProtocol]()
+    
     
     override init() {}
     init(loader: LoaderView) {
@@ -54,9 +58,17 @@ extension HomeViewModel {
         switch cellModel.cellType {
         case .jumbled:
             if let cell = tableView.dequeueReusableCell(withIdentifier: TextTableViewCell.identifier, for: indexPath) as? TextTableViewCell {
+                cell.dropDown.dataSource = menuDataSource
                 cell.cellModel = cellModel
                 cell.viewModel = self
                 cell.textStrVal = textStrArr[indexPath.row]
+                cell.dropDown.selectionAction = { [unowned self] (index: Int, item: String) in
+                  print("Selected item: \(item) at index: \(index)")
+                    guard !self.menuDataSource.isEmpty else { self.errorHandler?(.selectedTxt);return}
+                    self.menuDataSource.remove(at: index)
+                    self.successHandler?()
+                }
+            
                return cell
             }
             
@@ -99,7 +111,8 @@ extension HomeViewModel: HomeViewModelProtocol {
                     switch response {
                     case .success(let data):
                         self.cellModels.removeAll()
-                        if !(data.textDataModel ?? []).isEmpty {
+                        if let txtData = data.textDataModel, !txtData.isEmpty {
+                            self.menuDataSource = txtData.enumerated().map({ (i,_) in return "\(i+1)" })
                             let cModel = TextTableViewCellModel(textStrArr: data.textDataModel ?? [])
                             let sModel = SectionTableViewCellModel(titleStr: "Here the questions will be ordered in the correct sequence.")
                             self.cellModels.append(cModel)

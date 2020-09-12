@@ -15,13 +15,14 @@ class TextTableViewCell: UITableViewCell {
     @IBOutlet weak var menuBtn: UIButton!
     
     let dropDown = DropDown()
-    
     var textStrArr = [String]()
+    var menuSelection: ((Int, String) -> ())?
     
     var cellModel: CellConfigProtocol? {
         didSet {
             guard let model = cellModel as? TextTableViewCellModel else {return}
             textStrArr = model.textStrArr
+            configCellMenu()
         }
     }
     
@@ -37,12 +38,6 @@ class TextTableViewCell: UITableViewCell {
         }
     }
     
-    override func awakeFromNib() {
-        super.awakeFromNib()
-        configCellMenu()
-        
-    }
-    
     @IBAction func menuBtnAction(_ sender: UIButton) {
         dropDown.show()
     }
@@ -51,13 +46,14 @@ class TextTableViewCell: UITableViewCell {
 
 extension TextTableViewCell {
     func configCellMenu() {
-        dropDown.dataSource  = ["1","2","3"]
+//        dropDown.dataSource  = textStrArr.enumerated().map { (i,_) -> String in
+//           return "\(i+1)"
+//        }
         dropDown.customCellConfiguration = { (index: Index, item: String, cell: DropDownCell) -> Void in
             cell.optionLabel.textAlignment = .center
         }
-        dropDown.selectionAction = { [unowned self] (index: Int, item: String) in
-          print("Selected item: \(item) at index: \(index)")
-        }
+        
+    
         dropDown.width = menuBtn.frame.width + 10
         dropDown.anchorView = menuBtn
         dropDown.direction = .bottom
