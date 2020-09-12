@@ -8,6 +8,12 @@
 
 import Foundation
 
+enum Results<T> {
+    case success(T)
+    case failure(errorStr: String)
+}
+
+
 class ModelResponse: NSObject, Decodable {
     
     var textDataModel: [String]?

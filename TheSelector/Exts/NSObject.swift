@@ -8,12 +8,6 @@
 
 import Foundation
 import UIKit
-import SASLoaderPod
-
-enum Results<T> {
-    case success(T)
-    case failure(errorStr: String)
-}
 
 extension NSObject {
     static var identifier: String {
@@ -53,12 +47,3 @@ extension NSObject {
     }
 }
 
-extension UIViewController {
-    static let loader: (UIViewController) -> (LoaderView) = { (vc) in
-        return LoaderView(callOn: vc, type: .lineScale, color: .red, padding: 25)
-    }
-    
-    func loader() -> LoaderView {
-        return UIViewController.loader(self)
-    }
-}
