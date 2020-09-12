@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		181C50F8250D11780032FCA6 /* TextDataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 181C50F7250D11780032FCA6 /* TextDataModel.swift */; };
+		181C50FA250D12810032FCA6 /* TextData.json in Resources */ = {isa = PBXBuildFile; fileRef = 181C50F9250D12800032FCA6 /* TextData.json */; };
+		181C50FC250D12FB0032FCA6 /* NSObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 181C50FB250D12FB0032FCA6 /* NSObject.swift */; };
 		18F172A8250C680E0090FDCC /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18F172A7250C680E0090FDCC /* HomeViewController.swift */; };
 		18F172AA250C687F0090FDCC /* HomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18F172A9250C687F0090FDCC /* HomeViewModel.swift */; };
 		18F172AC250C6D190090FDCC /* TextTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18F172AB250C6D190090FDCC /* TextTableViewCell.swift */; };
@@ -43,6 +46,9 @@
 /* Begin PBXFileReference section */
 		03DFB25F5E1962D356F90401 /* Pods-TheSelectorTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TheSelectorTests.release.xcconfig"; path = "Target Support Files/Pods-TheSelectorTests/Pods-TheSelectorTests.release.xcconfig"; sourceTree = "<group>"; };
 		07837A3F8EB758BEE8E33A7F /* Pods_TheSelector.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_TheSelector.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		181C50F7250D11780032FCA6 /* TextDataModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextDataModel.swift; sourceTree = "<group>"; };
+		181C50F9250D12800032FCA6 /* TextData.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = TextData.json; sourceTree = "<group>"; };
+		181C50FB250D12FB0032FCA6 /* NSObject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NSObject.swift; sourceTree = "<group>"; };
 		18F172A7250C680E0090FDCC /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		18F172A9250C687F0090FDCC /* HomeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewModel.swift; sourceTree = "<group>"; };
 		18F172AB250C6D190090FDCC /* TextTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextTableViewCell.swift; sourceTree = "<group>"; };
@@ -97,6 +103,42 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		181C50FD250D1DEC0032FCA6 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				181C50F7250D11780032FCA6 /* TextDataModel.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		181C50FE250D1DF20032FCA6 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				9D44BDD1250B8A200015A26B /* Main.storyboard */,
+				9D44BDD6250B8A230015A26B /* LaunchScreen.storyboard */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		181C50FF250D1DF90032FCA6 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				18F172A9250C687F0090FDCC /* HomeViewModel.swift */,
+				18F172A7250C680E0090FDCC /* HomeViewController.swift */,
+				18F172AB250C6D190090FDCC /* TextTableViewCell.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		181C5100250D1E430032FCA6 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				181C50F9250D12800032FCA6 /* TextData.json */,
+				9D44BDD4250B8A230015A26B /* Assets.xcassets */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
 		3B825AD820CD181AB0F3E675 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
@@ -145,16 +187,15 @@
 		9D44BDCA250B8A200015A26B /* TheSelector */ = {
 			isa = PBXGroup;
 			children = (
+				181C5100250D1E430032FCA6 /* Resources */,
 				9D44BDCB250B8A200015A26B /* AppDelegate.swift */,
 				9D44BDCD250B8A200015A26B /* SceneDelegate.swift */,
-				9D44BDD1250B8A200015A26B /* Main.storyboard */,
-				9D44BDD4250B8A230015A26B /* Assets.xcassets */,
-				9D44BDD6250B8A230015A26B /* LaunchScreen.storyboard */,
+				181C50FD250D1DEC0032FCA6 /* Model */,
+				181C50FE250D1DF20032FCA6 /* View */,
+				181C50FF250D1DF90032FCA6 /* ViewModel */,
 				9D44BDD9250B8A230015A26B /* Info.plist */,
-				18F172A7250C680E0090FDCC /* HomeViewController.swift */,
-				18F172A9250C687F0090FDCC /* HomeViewModel.swift */,
-				18F172AB250C6D190090FDCC /* TextTableViewCell.swift */,
 				18F172AD250C86890090FDCC /* PaddingLabel.swift */,
+				181C50FB250D12FB0032FCA6 /* NSObject.swift */,
 			);
 			path = TheSelector;
 			sourceTree = "<group>";
@@ -286,6 +327,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				181C50FA250D12810032FCA6 /* TextData.json in Resources */,
 				9D44BDD8250B8A230015A26B /* LaunchScreen.storyboard in Resources */,
 				9D44BDD5250B8A230015A26B /* Assets.xcassets in Resources */,
 				9D44BDD3250B8A200015A26B /* Main.storyboard in Resources */,
@@ -417,6 +459,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				9D44BDCC250B8A200015A26B /* AppDelegate.swift in Sources */,
+				181C50FC250D12FB0032FCA6 /* NSObject.swift in Sources */,
+				181C50F8250D11780032FCA6 /* TextDataModel.swift in Sources */,
 				18F172AE250C86890090FDCC /* PaddingLabel.swift in Sources */,
 				9D44BDCE250B8A200015A26B /* SceneDelegate.swift in Sources */,
 				18F172A8250C680E0090FDCC /* HomeViewController.swift in Sources */,

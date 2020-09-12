@@ -7,7 +7,8 @@ target 'TheSelector' do
 
   # Pods for TheSelector
 	pod 'DropDown'
-
+  pod 'SASLoaderPod'
+  
   target 'TheSelectorTests' do
     inherit! :search_paths
     # Pods for testing
