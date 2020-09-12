@@ -10,15 +10,17 @@ import Foundation
 import UIKit
 import SASLoaderPod
 
-
+///Common protocol for all view models if needed
 protocol ViewModelProtocol: class {
     func configTable(table: UITableView)
 }
 
+/// Protocol for HomeViewModel
 protocol HomeViewModelProtocol: ViewModelProtocol, UITableViewDataSource, UITableViewDelegate {
     func callingHomeAPI()
     var successHandler: (() -> ())? { get set }
     var errorHandler: ((_ errorStr: String) -> ())? { get set }
+    func resetAllActions()
 }
 
 class HomeViewModel: NSObject {
@@ -28,11 +30,11 @@ class HomeViewModel: NSObject {
     var menuDataSource = [String]()
     var selectedTextArr = [String]()
     var cellModels = [CellConfigProtocol]()
+    var selectionCount: Int = 0
     
     //MARK: properties from HomeViewModelProtocol protocol
     var successHandler: (() -> ())?
     var errorHandler: ((_ errorStr: String) -> ())?
-    
     
     override init() {}
     init(loader: LoaderView) {
@@ -41,6 +43,11 @@ class HomeViewModel: NSObject {
     
 }
 
+extension HomeViewModel {
+   
+}
+
+//MARK: TableView methods
 extension HomeViewModel {
     
     func numberOfSections(in tableView: UITableView) -> Int {
@@ -52,7 +59,6 @@ extension HomeViewModel {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        print("TextTableViewCell.identifier = \(TextTableViewCell.identifier)")
         
         let cellModel = cellModels[indexPath.section]
         
@@ -63,17 +69,15 @@ extension HomeViewModel {
                 cell.cellModel = cellModel
                 cell.viewModel = self
                 cell.textStrVal = textStrArr[indexPath.row]
+                cell.menuBtnActionHandler = errorHandler
                 cell.dropDown.selectionAction = { [unowned self] (index: Int, item: String) in
-                  print("Selected item: \(item) at index: \(index)")
-                    guard !self.menuDataSource.isEmpty else { self.errorHandler?(.selectedTxt);return}
+                 
                     self.menuDataSource.remove(at: index)
-                    if let intVal = Int(item) {
-                        self.selectedTextArr.append(self.textStrArr[intVal])
-                        print("self.selectedTextArr.count = \(self.selectedTextArr.count) ")
-                        let selectedModel = SelectedItemTableViewCellModel(textStrArr: self.selectedTextArr)
-                        self.cellModels.append(selectedModel)
+                    if let indVal = Int(item) {
+                        self.selectedTextArr[indVal-1] = self.textStrArr[indexPath.row]
+                        self.selectionCount += 1
                     }
-                    
+                
                     self.successHandler?()
                 }
             
@@ -85,10 +89,18 @@ extension HomeViewModel {
                 cell.cellModel = cellModel
                return cell
             }
+            
         case .ordered:
             if let cell = tableView.dequeueReusableCell(withIdentifier: SelectedItemTableViewCell.identifier, for: indexPath) as? SelectedItemTableViewCell {
                 cell.indexLB.text = "\(indexPath.row + 1)."
                 cell.textStrVal = selectedTextArr[indexPath.row]
+                cell.eraseBtnHandler = { [weak self] in
+                    guard let vc = self else {return}
+                    vc.menuDataSource.append("\(indexPath.row + 1)")
+                    vc.menuDataSource.sort()
+                    vc.selectedTextArr[indexPath.row] = ""
+                    vc.successHandler?()
+                }
                return cell
             }
         }
@@ -100,10 +112,28 @@ extension HomeViewModel {
     
 }
 
+//extension HomeViewModel {
+//    func eraseAction(indexPath: IndexPath) {
+//        menuDataSource.append("\(indexPath.row + 1)")
+//        menuDataSource.sort()
+//        selectedTextArr[indexPath.row] = ""
+//        successHandler?()
+//    }
+//}
+
 
 
 extension HomeViewModel: HomeViewModelProtocol {
     
+    ///function to refresh view
+    func resetAllActions() {
+       self.menuDataSource = textStrArr.enumerated().map({ (i,_) in return "\(i+1)" })
+       selectedTextArr.removeAll()
+       textStrArr.forEach { _ in selectedTextArr.append("") }
+       self.successHandler?()
+    }
+    
+    //Configuring TableView
     func configTable(table: UITableView) {
         table.delegate = self
         table.dataSource = self
@@ -127,10 +157,10 @@ extension HomeViewModel: HomeViewModelProtocol {
                         if let txtData = data.textDataModel, !txtData.isEmpty {
                             self.menuDataSource = txtData.enumerated().map({ (i,_) in return "\(i+1)" })
                             let cModel = TextTableViewCellModel(textStrArr: data.textDataModel ?? [])
-                            let sModel = SectionTableViewCellModel(titleStr: "Here the questions will be ordered in the correct sequence.")
+                            let sModel = SectionTableViewCellModel(titleStr: .sectionTitle)
                             
                             txtData.forEach { _ in self.selectedTextArr.append("") }
-                            print("self.selectedTextArr.count = \(self.selectedTextArr.count)")
+            
                             let selectedModel = SelectedItemTableViewCellModel(textStrArr: self.selectedTextArr)
                             self.cellModels.append(cModel)
                             self.cellModels.append(sModel)

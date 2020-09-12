@@ -17,7 +17,11 @@ class HomeViewController: UIViewController {
             callingHandlers()
         }
     }
-
+    
+    @IBAction func refreshViewAction(_ sender: Any) {
+        homeViewModel?.resetAllActions()
+    }
+    
 }
 
 //MARK: Life Cycle

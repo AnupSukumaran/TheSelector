@@ -17,7 +17,7 @@ class TextTableViewCell: UITableViewCell {
     let dropDown = DropDown()
     var textStrArr = [String]()
     var menuSelection: ((Int, String) -> ())?
-    
+    var menuBtnActionHandler: ((_ errorStr: String) -> ())?
     var cellModel: CellConfigProtocol? {
         didSet {
             guard let model = cellModel as? TextTableViewCellModel else {return}
@@ -39,6 +39,7 @@ class TextTableViewCell: UITableViewCell {
     }
     
     @IBAction func menuBtnAction(_ sender: UIButton) {
+        guard !viewModel.menuDataSource.isEmpty else {menuBtnActionHandler?(.selectedTxt);return}
         dropDown.show()
     }
 
@@ -46,14 +47,11 @@ class TextTableViewCell: UITableViewCell {
 
 extension TextTableViewCell {
     func configCellMenu() {
-//        dropDown.dataSource  = textStrArr.enumerated().map { (i,_) -> String in
-//           return "\(i+1)"
-//        }
+
         dropDown.customCellConfiguration = { (index: Index, item: String, cell: DropDownCell) -> Void in
             cell.optionLabel.textAlignment = .center
         }
         
-    
         dropDown.width = menuBtn.frame.width + 10
         dropDown.anchorView = menuBtn
         dropDown.direction = .bottom

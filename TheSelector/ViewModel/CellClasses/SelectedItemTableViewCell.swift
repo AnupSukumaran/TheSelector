@@ -16,20 +16,7 @@ class SelectedItemTableViewCell: UITableViewCell {
     
     var eraseBtnHandler: (() -> ())?
     var textStrArr = [String]()
-    
-//    var cellModel: CellConfigProtocol? {
-//        didSet {
-//            guard let model = cellModel as? SelectedItemTableViewCellModel else {return}
-//            textStrArr = model.textStrArr
-//        }
-//    }
-//    
-//    var viewModel: HomeViewModel! {
-//        didSet {
-//            viewModel.selectedTextArr = textStrArr
-//        }
-//    }
-    
+        
     var textStrVal: String = "-" {
         didSet {
             itemTxt.text = textStrVal

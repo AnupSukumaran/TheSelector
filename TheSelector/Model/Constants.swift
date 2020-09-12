@@ -13,4 +13,5 @@ extension String {
     static var appName = "TheSelector"
     static var ok = "OK"
     static var selectedTxt = "Selected every options"
+    static var sectionTitle = "Here the questions will be ordered in the correct sequence."
 }
