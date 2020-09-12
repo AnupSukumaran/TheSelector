@@ -33,6 +33,7 @@ class SelectedItemTableViewCell: UITableViewCell {
     var textStrVal: String = "-" {
         didSet {
             itemTxt.text = textStrVal
+            eraseBtn.isHidden = itemTxt.text == "" 
         }
     }
     

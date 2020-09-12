@@ -87,6 +87,7 @@ extension HomeViewModel {
             }
         case .ordered:
             if let cell = tableView.dequeueReusableCell(withIdentifier: SelectedItemTableViewCell.identifier, for: indexPath) as? SelectedItemTableViewCell {
+                cell.indexLB.text = "\(indexPath.row + 1)."
                 cell.textStrVal = selectedTextArr[indexPath.row]
                return cell
             }
@@ -127,8 +128,13 @@ extension HomeViewModel: HomeViewModelProtocol {
                             self.menuDataSource = txtData.enumerated().map({ (i,_) in return "\(i+1)" })
                             let cModel = TextTableViewCellModel(textStrArr: data.textDataModel ?? [])
                             let sModel = SectionTableViewCellModel(titleStr: "Here the questions will be ordered in the correct sequence.")
+                            
+                            txtData.forEach { _ in self.selectedTextArr.append("") }
+                            print("self.selectedTextArr.count = \(self.selectedTextArr.count)")
+                            let selectedModel = SelectedItemTableViewCellModel(textStrArr: self.selectedTextArr)
                             self.cellModels.append(cModel)
                             self.cellModels.append(sModel)
+                            self.cellModels.append(selectedModel)
                         }
                         self.successHandler?()
                     
